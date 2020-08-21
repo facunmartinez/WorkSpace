@@ -17,7 +17,7 @@ function showCategoriesList(array) {
                         <h4 class="mb-1">` + category.name + `</h4>
                         <small class="text-muted">` + category.soldCount + ` artículos</small>
                     </div>
-                      <div>
+                      <div> 
                          <p>` + category.description + `</p>
                           </div>
                           <div>
@@ -28,7 +28,7 @@ function showCategoriesList(array) {
         </div>
         `
 
-        document.getElementById("cat-list-contain").innerHTML = htmlContentToAppend;
+        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -37,7 +37,7 @@ function showCategoriesList(array) {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e) {
     showSpinner();
-    getJSONData(LIST_URL).then(function(resultObj) {
+    getJSONData(PRODUCTS_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
             categoriesArray = resultObj.data;
             hideSpinner();
@@ -45,4 +45,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
             showCategoriesList(categoriesArray);
         }
     });
+});
+
+//Función que se ejecuta una vez que se haya lanzado el evento de
+//que el documento se encuentra cargado, es decir, se encuentran todos los
+//elementos HTML presentes.
+document.addEventListener("DOMContentLoaded", function (e) {
+
 });

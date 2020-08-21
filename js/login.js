@@ -1,26 +1,24 @@
-// Funcion que valida logueo.
-var status = null;
+var loginOpt = document.getElementById("iniciosesion");
 
-function validate() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    var expresion = /\w+@\w+\.+[a-z]/;
-    if (username === "" || password === "") {
-        alert("Debe ingresar usuario y contraseña");
-        return false;
-    } else if (!expresion.test(username)) {
-        alert("Correo inválido");
-        return false;
-    } else {
-        logueado = "true";
-        sessionStorage.setItem("estaLogueado", logueado);
-        window.location.replace("./index.html");
-        alert("Se ha logueado correctamente");
-    }
+//Funcion onclick del login para redireccion
+function onLogin() {
+    window.location.href = "inicio.html"
 }
 
+// validación login form
+var userName = document.getElementById("username");
+var loginPassword = document.getElementById("password");
 
 
+function checkLoginForm() {
+
+    if (userName.value == "" || loginPassword.value == "") {
+        alert("Debe completar todos los campos");
+        return false;
+    } else {
+        return true;
+    }
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
