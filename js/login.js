@@ -1,22 +1,18 @@
-var loginOpt = document.getElementById("iniciosesion");
-
-//Funcion onclick del login para redireccion
-function onLogin() {
-    window.location.href = "inicio.html"
-}
-
-// validación login form
-var userName = document.getElementById("username");
-var loginPassword = document.getElementById("password");
-
-
 function checkLoginForm() {
 
-    if (userName.value == "" || loginPassword.value == "") {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var expresion = /\w+@\w+\.+[a-z]/;
+
+
+    if (username == "" || password == "") {
         alert("Debe completar todos los campos");
+    } else if (!expresion.test(username)) {
+        alert("Correo inválido");
         return false;
     } else {
-        return true;
+        window.location.href = "inicio.html";
+        alert("Disfrute su estadía");
     }
 }
 

@@ -50,16 +50,16 @@
         <div class="card card-container">
             <img id="profile-img" class="profile-img-card" src="../WorkSpace/img/logo.png" />
             <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin" id="iniciosesion">
+            <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="username" class="form-control" placeholder="Usuario" required autofocus>
+                <input type="email" id="username" class="form-control" placeholder="Usuario" required>
                 <input type="password" id="password" class="form-control" placeholder="Contraseña" required>
                 <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Recuérdame
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="onLogin()">Iniciar sesión</button>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" onclick="checkLoginForm()">Iniciar sesión</button>
             </form>
             <!-- /form -->
             <a href="#" class="forgot-password">
