@@ -11,10 +11,12 @@ function checkLoginForm() {
         alert("Correo inválido");
         return false;
     } else {
+        localStorage.setItem("user", username);
         window.location.href = "inicio.html";
         alert("Disfrute su estadía");
     }
 }
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
