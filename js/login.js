@@ -13,7 +13,7 @@ function checkLoginForm() {
     } else {
         localStorage.setItem("user", username);
         window.location.href = "inicio.html";
-        alert("Disfrute su estadía");
+        alert("La plata se hizo para usarla, disfrute sus compras");
     }
 }
 
