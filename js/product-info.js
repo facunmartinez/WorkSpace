@@ -49,6 +49,7 @@ function showRelatedProducts(array) {
 function showComments(array) {
     console.log("");
 
+
     let htmlContentToAppend = "";
 
     for (let i = 0; i < array.length; i++) {
@@ -91,6 +92,7 @@ function showComments(array) {
 
 function addCommment() {
 
+
     let htmlContentToAppend = "";
 
     htmlContentToAppend += `
@@ -105,12 +107,28 @@ function addCommment() {
                     <!-- Contenedor del Comentario -->
                     <div class="comment-box">
                         <div class="comment-head">
-                            <h1 id="user-b" class="comment-name"></h1>
+                            <a href="my-profile.html" id="user-b" class="comment-name"></a>
                             <span id="HoraActual"></span>
+                            <span class="score">
+                            <form>
+  <p class="clasificacion">
+    <input id="radio1" type="radio" name="estrellas" value="5"><!--
+    --><label for="radio1">★</label><!--
+    --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+    --><label for="radio2">★</label><!--
+    --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+    --><label for="radio3">★</label><!--
+    --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+    --><label for="radio4">★</label><!--
+    --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+    --><label for="radio5">★</label>
+  </p>
+</form>
+                            </span>
                         </div>
                         <textarea type="text" class="md-textarea form-control" rows="3"></textarea>
-                        <button type="submit" class="btn btn-lg btn-primary btn-signin">Comentar</button>
                     </div>
+                    <button type="submit" class="btn btn-lg btn-primary btn-signin">Comentar</button>
                 </div>
             </li>
         </ul>
