@@ -1,25 +1,6 @@
 var product = {};
 
 
-function showImagesGallery(array) {
-
-    let htmlContentToAppend = "";
-
-    for (let i = 0; i < array.length; i++) {
-        let imageSrc = array[i];
-
-        htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
-        </div>
-        `
-
-        document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
-    }
-}
-
 function showRelatedProducts(array) {
 
     let htmlContentToAppend = "";
@@ -164,9 +145,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
             costHTML.innerHTML = product.cost;
             categoryHTML.innerHTML = product.category;
 
-            //Muestro las imagenes en forma de galería
-            showImagesGallery(product.images);
-            //Muestro los productos relacionados
         }
 
     });
@@ -213,4 +191,19 @@ function showTime() {
 
     $("#HoraActual").text(hours + ":" + minutes + ":" + seconds);
     setTimeout("showTime()", 1000);
+}
+
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 2000);
 }

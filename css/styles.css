@@ -559,3 +559,16 @@ input[type="radio"]:checked~label {
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
+
+
+/* CARRUSEL DE FOTOS */
+
+.carousel {
+    box-sizing: border-box
+}
+
+.carousel {
+    max-width: 600px;
+    position: relative;
+    margin: auto;
+}
