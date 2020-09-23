@@ -1,6 +1,31 @@
 var product = {};
 
 
+function showImagesGallery(array) {
+
+    let htmlContentToAppend = "";
+
+    for (let i = 0; i < array.length; i++) {
+        let imageSrc = array[i];
+
+        if (i === 0) {
+
+            htmlContentToAppend += `
+                <div class="carousel-item active">
+                      <img src="` + imageSrc + `" class="d-block w-100 alt="...">
+                </div>
+            `
+        } else {
+            htmlContentToAppend += `
+                <div class="carousel-item">
+                      <img src="` + imageSrc + `" class="d-block w-100" alt="...">
+                </div>
+            `
+        }
+        document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+    }
+}
+
 function showRelatedProducts(array) {
 
     let htmlContentToAppend = "";
@@ -144,6 +169,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
             currencyHTML.innerHTML = product.currency;
             costHTML.innerHTML = product.cost;
             categoryHTML.innerHTML = product.category;
+
+            //Muestro las imagenes en forma de galería
+            showImagesGallery(product.images);
 
         }
 
