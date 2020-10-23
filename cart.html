@@ -11,6 +11,23 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/dropzone.css" rel="stylesheet">
@@ -45,8 +62,69 @@
             <div id="articles-cart">
             </div>
         </div>
-
+        <div id="shipping"></div>
     </main>
+    <footer class="text-muted">
+        <div class="container">
+            <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+            <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+        </div>
+    </footer>
+    <div class="alert fade" role="alert" id="alertResult">
+        <span id="resultSpan"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Forma de pago</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="custom-control custom-radio">
+                                <input id="creditCard" name="cardType" type="radio" class="custom-control-input" onclick="tarjeta()">
+                                <label class="custom-control-label" for="creditCard">Tarjeta de crédito</label><i class="fa fa-cc-visa" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col-md-6 mb-3">
+                            <label for="cardNumber">Número de tarjeta</label>
+                            <input type="number" class="form-control" id="cardNumber" placeholder="" value="">
+                            <label for="cardCalendar">Vencimiento MM/AAAA</label>
+                            <input type="month" class="form-control" id="cardCalendar" placeholder="" value="">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cardSec">Codigo de seg.</label>
+                            <input type="number" class="form-control" id="cardSec" placeholder="" value="" min="100" max="999">
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="custom-control custom-radio">
+                                <input id="transferBank" name="cardType" type="radio" class="custom-control-input" onclick="transfer()">
+                                <label class="custom-control-label" for="transferBank">Transferencia Bancaria</label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col-md-6 mb-3">
+                            <label for="bankNumber">Número de cuenta</label>
+                            <input type="number" class="form-control" id="bankNumber" placeholder="" value="" min="0" max="999999999999">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="spinner-wrapper">
         <div class="lds-ring">
             <div></div>
@@ -55,11 +133,11 @@
             <div></div>
         </div>
     </div>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/dropzone.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/cart.js"></script>
+    <script src="js/jquery-3.4.1.min.js "></script>
+    <script src="js/bootstrap.bundle.min.js "></script>
+    <script src="js/dropzone.js "></script>
+    <script src="js/init.js "></script>
+    <script src="js/cart.js "></script>
 </body>
 
 </html>
