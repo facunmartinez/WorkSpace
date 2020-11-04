@@ -6,8 +6,6 @@ let PERCENTAGE_SYMBOL = '%';
 let SUCCESS_MSG = "¡Se ha realizado la compra con éxito! :)";
 let ERROR_MSG = "Ha habido un error :(, verifica qué pasó.";
 let total = 0;
-var json = { "msg": "Se ha realizado la compra con exito! :)" }
-
 
 function showArticlesCart(array) {
 
@@ -26,9 +24,9 @@ function showArticlesCart(array) {
         htmlContentToAppend += `
         <div class="list-group-item">
 
-    <div class="row">
-        <div class="col-3">
-            <img src="` + articles.src + `" class="img-cart">
+    <div class="item row">
+        <div class=" col-3">
+            <img src="` + articles.src + `" class="item-image img-cart">
         </div>
         <div class="col">
             <div>
@@ -36,7 +34,7 @@ function showArticlesCart(array) {
                 <hr>
             </div>
             <div>
-                <h7>` + articles.name + `</h7>
+                <h7 class="item-name">` + articles.name + `</h7>
             </div>
         </div>
         <div class="col">
@@ -45,7 +43,7 @@ function showArticlesCart(array) {
                 <hr>
             </div>
             <div>
-                <td><input id="cant-` + i + `" type="number" value="` + articles.count + `" style="width: 50px"></td>
+                <td><input class="item-cant" id="cant-` + i + `" type="number" value="` + articles.count + `" style="width: 50px" min="0"></td>
             </div>
         </div>
         <div class="col">
@@ -53,7 +51,7 @@ function showArticlesCart(array) {
                 <h6><b>Precio unitario</b></h6>
                 <hr>
             </div>
-            <h7>` + articles.currency + ` <span id="cost-` + i + `">` + articles.unitCost + `</span></h7>
+            <h7 class="item-price">` + articles.currency + ` <span id="cost-` + i + `">` + articles.unitCost + `</span></h7>
         </div>
         <div class="col">
             <div>
@@ -62,13 +60,15 @@ function showArticlesCart(array) {
                         <hr>
             </div>
             <div>
-                <span id="subTotal` + i + `">$` + monenda + `</span>
+                <span class="item-total" id="subTotal` + i + `">$` + monenda + `</span>
             </div>
         </div>
     </div>
 </div>
     `
+
     }
+
 
     htmlContentToAppendII += `
 
@@ -148,7 +148,7 @@ function showArticlesCart(array) {
             </div>
             <br>
             <br>
-            <button onclick="pago()" class="btn btn-primary btn-lg" type="submit">Finalizar compra</button>
+            <button class="btn btn-primary btn-lg" type="submit">Finalizar compra</button>
 
         </form>
     </div>
@@ -156,7 +156,6 @@ function showArticlesCart(array) {
 </div>
 
 `
-
     document.getElementById("articles-cart").innerHTML = htmlContentToAppend;
     document.getElementById("shipping").innerHTML = htmlContentToAppendII;
 }
@@ -222,13 +221,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
         });
 
 
-        //Se obtiene el formulario de publicación de producto
+        //Se obtiene el formulario de envío de producto
         var sellForm = document.getElementById("sell-info");
 
 
         //Se agrega una escucha en el evento 'submit' que será
-        //lanzado por el formulario cuando se seleccione 'Vender'.
-        sellForm.addEventListener("submit", function(e) {
+        //lanzado por el formulario cuando se seleccione 'Finalizar compra'.
+        sellForm.addEventListener("submit", function() {
 
             let shippingStreet = document.getElementById("shippingStreet");
             let shippingCorner = document.getElementById("shippingCorner");
@@ -260,11 +259,22 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 infoMissing = true;
             }
 
+            //Consulto si la información de medio de pago ha cambiado
+            if (document.getElementById("tarjeta").innerHTML == "Aún no se ha seleccionado un medio de pago") {
+                alert("Seleccione un medio de pago")
+                infoMissing = true;
+            }
+
+            if (document.getElementById("totalCostText").innerText == "$0" || document.getElementById("totalCostText").innerText == "-") {
+                alert("Ocurrió un error, verifique la cantidad de su producto")
+                infoMissing = true
+            }
+
             if (!infoMissing) {
                 //Aquí ingresa si pasó los controles, irá a enviar
                 //la solicitud para crear la publicación.
 
-                getJSONData(PUBLISH_PRODUCT_URL).then(function(resultObj) {
+                getJSONData(COMPRA_PRODUCT_URL).then(function(resultObj) {
                     let msgToShowHTML = document.getElementById("resultSpan");
                     let msgToShow = "";
 
@@ -300,10 +310,4 @@ function tarjeta() {
 
 function transfer() {
     document.getElementById("tarjeta").innerHTML = "Transferencia Bancaria";
-}
-
-function pago() {
-    if (document.getElementById("tarjeta").innerHTML == "Aún no se ha seleccionado un medio de pago") {
-        return alert("Selecciona un medio de pago")
-    }
 }

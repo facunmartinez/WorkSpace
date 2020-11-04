@@ -16,23 +16,30 @@
 </head>
 
 <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
-        <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
-            <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-            <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-            <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="user-a">
-                <script>
-                    document.getElementById("user-a").innerHTML = localStorage.getItem("user");
-                </script>
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="my-profile.html">Mi cuenta</a>
-                <a class="dropdown-item" href="cart.html">Mi carrito</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
-            </div>
+    <nav class="menuDos site-header sticky-top py-1 bg-dark navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+          </button>
+        <div class="menu collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav justify-content-between">
+                <li class="nav-item"><a class="nav-link" href="inicio.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="categories.html">Categorías</a></li>
+                <li class="nav-item"><a class="nav-link" href="products.html">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="sell.html">Vender</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="user-a">
+                        <script>
+                            document.getElementById("user-a").innerHTML = localStorage.getItem("user");
+                        </script>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+                        <a class="dropdown-item" href="cart.html">Mi carrito</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+                    </div>
+                </li>
+            </ul>
     </nav>
     <!--Desde aquí agrego info-->
     <main role="main" class="pb-5">
@@ -72,18 +79,17 @@
                         <div class="col-3 p-0">
                             <div class="btn-group" role="group">
                                 <button class="btn btn-light btn-block" id="rangeFilterCost">Filtrar</button>
-                                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-light btn-block" id="clearRangeFilter">Limpiar</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="list-group" id="cat-list-container">
-                    </div>
-                </div>
+            <div class="list-group" id="cat-list-container">
             </div>
+
     </main>
     <div id="spinner-wrapper">
         <div class="lds-ring">

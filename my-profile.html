@@ -9,8 +9,10 @@
     <meta name="description" content="">
     <title>eMercado - Todo lo que busques está aquí</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
 
     <style>
         .bd-placeholder-img {
@@ -34,32 +36,76 @@
 </head>
 
 <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
-        <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
-            <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-            <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-            <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="user-a">
-                <script>
-                    document.getElementById("user-a").innerHTML = localStorage.getItem("user");
-                </script>
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="my-profile.html">Mi cuenta</a>
-                <a class="dropdown-item" href="cart.html">Mi carrito</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
-            </div>
-    </nav>
-    <div class="container p-5">
-        <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-            <h4 class="alert-heading">¡A trabajar! :)</h4>
-            <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-            <hr>
-            <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <nav class="menuDos site-header sticky-top py-1 bg-dark navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+          </button>
+        <div class="menu collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav justify-content-between">
+                <li class="nav-item"><a class="nav-link" href="inicio.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="categories.html">Categorías</a></li>
+                <li class="nav-item"><a class="nav-link" href="products.html">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="sell.html">Vender</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="user-a">
+                        <script>
+                            document.getElementById("user-a").innerHTML = localStorage.getItem("user");
+                        </script>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+                        <a class="dropdown-item" href="cart.html">Mi carrito</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
+    <main role="main" class="pb-5">
+        <div class="text-center p-4">
+            <h2>Mi perfil</h2>
+        </div>
+        <br>
+        <div class="row justify-content-md-center">
+            <div class="col-md-8 order-md-1">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h5>Primer nombre: <span class="profile" id="dataName"></span></h5>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h5>Primer apellido: <span class="profile" id="dataLastName"></span></h5>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h5>Segundo nombre: <span class="profile" id="dataSecondName"></span></h5>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <h5>Segundo apellido: <span class="profile" id="dataSecondLastName"></span></h5>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h5>E-mail: <span class="profile" id="dataEmail"></span></h5>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <h5>Telefono de contacto: <span class="profile" id="dataNumber"></span></h5>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalDatos">Cambiar datos</button>
+                <hr>
+                <button onclick="guardar(), aviso()" class="btn btn-primary btn-lg" type="submit">Guardar datos</button>
+            </div>
+        </div>
+    </main>
     <footer class="text-muted bg-light">
         <div class="container">
             <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
@@ -69,9 +115,60 @@
     <div class="alert fade alert-success" role="alert" id="alertResult">
         <span id="resultSpan"></span>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
+          <span aria-hidden="true">&times;</span>
+        </button>
     </div>
+    <!-- AQUÍ COMIENZA EL MODAL -->
+    <form id="profileData">
+        <div class="modal fade" tabindex="-1" role="dialog" id="modalDatos">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Configurar datos personales</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="profileName">Primer nombre*</label>
+                                    <input type="text" class="form-control" id="profileName" placeholder="" value="" name="profileName">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="profileLastName">Primer apellido*</label>
+                                    <input type="text" class="form-control" id="profileLastName" placeholder="" value="" name="profileLastName" required="">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="profileSecondName">Segundo nombre</label>
+                                    <input type="text" class="form-control" id="profileSecondName" placeholder="" value="" name="profileSecondName">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="profileSecondLastName">Segundo apellido*</label>
+                                    <input type="text" class="form-control" id="profileSecondLastName" placeholder="" value="" name="profileSecondLastName">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="profileEmail">E-mail*</label>
+                                    <input type="text" class="form-control" id="profileEmail" placeholder="" value="" name="profileEmail">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="profileNumber">Telefono de contacto*</label>
+                                    <input type="text" class="form-control" id="profileNumber" placeholder="" value="" name="profileNumber">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" id="create" class="btn btn-sm btn-success" value="Cambiar datos" />
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
     <div id="spinner-wrapper">
         <div class="lds-ring">
             <div></div>
@@ -80,11 +177,13 @@
             <div></div>
         </div>
     </div>
+
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/dropzone.js"></script>
     <script src="js/init.js"></script>
     <script src="js/my-profile.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
 </body>
 
 </html>

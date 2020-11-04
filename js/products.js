@@ -45,24 +45,25 @@ function showCategoriesList() {
 
             htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action">
+            <div class="container">
             <div class="row">
-                <div class="col-3">
+                <div class="col-sm">
                     <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
                 </div>
-                <div class="col">
+                <div class="col-sm">
                     <div class="d-flex w-100 justify-content-between">
                         <h4 class="mb-1">` + category.name + `</h4>
                         <small class="text-muted">` + category.soldCount + ` artículos</small>
                     </div>
-                      <div> 
-                         <p>` + category.description + `</p>
-                          </div>
-                          <div>
-                          <p>` + category.currency + "$" + category.cost + `</p>
-                          </div>
+                    <div> 
+                      <p>` + category.description + `</p>
+                    </div>
+                    <div>
+                      <p>` + category.currency + "$" + category.cost + `</p>
+                    </div>
                 </div>
             </div>
-        </div>
+            </div>
         `
         }
 
