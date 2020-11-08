@@ -44,6 +44,7 @@ var getJSONData = function(url) {
 
 function cerrarSesion() {
     localStorage.removeItem("dataUser")
+    localStorage.removeItem("recent-image")
     window.location.href = "index.html"
 }
 

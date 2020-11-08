@@ -2,6 +2,10 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e) {
+    const recentImageDataURL = localStorage.getItem("recent-image");
+    if (recentImageDataURL) {
+        document.querySelector("#imgPreview").setAttribute("src", recentImageDataURL)
+    }
     traerDatos();
 });
 
@@ -101,4 +105,28 @@ function alerta() {
 
 function aviso() {
     alert("Guardaste los datos correctamente")
+}
+
+
+// Guardo la imagen de perfil en el localStorage
+
+// Actúa cuando la imagen ya se haya cargado
+
+document.querySelector("#avatarProfile").addEventListener("change", function() {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+        localStorage.setItem("recent-image", reader.result);
+    })
+
+    reader.readAsDataURL(this.files[0]);
+})
+
+function relocation() {
+    window.location.href = "my-profile.html"
+}
+
+function removeImg() {
+    localStorage.removeItem("recent-image")
+    window.location.href = "my-profile.html"
 }

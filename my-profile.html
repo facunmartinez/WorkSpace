@@ -65,41 +65,42 @@
     <main role="main" class="pb-5">
         <div class="text-center p-4">
             <h2>Mi perfil</h2>
+            <p class="lead">Aquí podrás ver y modificar tus datos.</p>
+        </div>
+        <br>
+        <div class="fondo-perfil">
+            <div>
+                <img class="perfil-profile" id="imgPreview" src="img/user.png" alt="Preview">
+            </div>
+            <br>
+            <div>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalProfile">Cambiar la foto de perfil</button>
+            </div>
         </div>
         <br>
         <div class="row justify-content-md-center">
-            <div class="col-md-8 order-md-1">
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <h5>Primer nombre: <span class="profile" id="dataName"></span></h5>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <h5>Primer apellido: <span class="profile" id="dataLastName"></span></h5>
-                    </div>
-                </div>
+            <div class="card card-try" style="width: 30rem;">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <p><b>Primer nombre: </b><span class="profile" id="dataName"></span></p>
+                    </li>
+                    <li class="list-group-item">
+                        <p><b>Primer apellido: </b><span class="profile" id="dataLastName"></span></p>
+                    </li>
+                    <li class="list-group-item">
+                        <p><b>Segundo nombre: </b><span class="profile" id="dataSecondName"></span></p>
+                    </li>
+                    <li class="list-group-item">
+                        <p><b>Segundo apellido: </b><span class="profile" id="dataSecondLastName"></span></p>
+                    </li>
+                    <li class="list-group-item">
+                        <p><b>E-mail: </b><span class="profile" id="dataEmail"></span></p>
+                    </li>
+                    <li class="list-group-item">
+                        <p><b>Telefono de contacto: </b><span class="profile" id="dataNumber"></span></p>
+                    </li>
+                </ul>
                 <br>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <h5>Segundo nombre: <span class="profile" id="dataSecondName"></span></h5>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <h5>Segundo apellido: <span class="profile" id="dataSecondLastName"></span></h5>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <h5>E-mail: <span class="profile" id="dataEmail"></span></h5>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <h5>Telefono de contacto: <span class="profile" id="dataNumber"></span></h5>
-                    </div>
-                </div>
-                <br>
-                <hr>
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalDatos">Cambiar datos</button>
                 <hr>
                 <button onclick="guardar(), aviso()" class="btn btn-primary btn-lg" type="submit">Guardar datos</button>
@@ -112,12 +113,6 @@
             <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
         </div>
     </footer>
-    <div class="alert fade alert-success" role="alert" id="alertResult">
-        <span id="resultSpan"></span>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
     <!-- AQUÍ COMIENZA EL MODAL -->
     <form id="profileData">
         <div class="modal fade" tabindex="-1" role="dialog" id="modalDatos">
@@ -168,6 +163,41 @@
             </div>
         </div>
     </form>
+
+    <!--MODAL PARA LA FOTO DE PERFIL-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalProfile">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cargue una foto de perfil</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h5>Seleccione una imagen de su dispositivo</h5>
+                            </div>
+                        </div>
+                        <br>
+                        <hr>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <input type="file" id="avatarProfile">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="relocation()" type="button" class="btn btn-success" data-dismiss="modal">Guardar imagen</button>
+                    <button onclick="removeImg()" type="button" class="btn btn-danger" data-dismiss="modal">Eliminar imagen</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="spinner-wrapper">
         <div class="lds-ring">

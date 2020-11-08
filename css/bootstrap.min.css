@@ -5742,6 +5742,7 @@ a.badge-dark:focus {
     border-right: 0;
     border-left: 0;
     border-radius: 0;
+    background-color: #F7F7F7;
 }
 
 .list-group-flush .list-group-item:last-child {
